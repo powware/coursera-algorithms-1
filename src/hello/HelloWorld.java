@@ -1,3 +1,4 @@
+package src.hello;
 
 public class HelloWorld {
 
