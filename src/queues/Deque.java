@@ -24,7 +24,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     public boolean isEmpty() {
-        return size > 0;
+        return size == 0;
     }
 
     public int size() {
@@ -74,7 +74,12 @@ public class Deque<Item> implements Iterable<Item> {
 
         --size;
 
-        first.next.previous = null;
+        if (first.next != null) {
+            first.next.previous = null;
+        } else {
+            last = null;
+        }
+
         Node temp = first;
         first = first.next;
 
@@ -88,7 +93,12 @@ public class Deque<Item> implements Iterable<Item> {
 
         --size;
 
-        last.previous.next = null;
+        if (last.previous != null) {
+            last.previous.next = null;
+        } else {
+            first = null;
+        }
+
         Node temp = last;
         last = last.previous;
 
@@ -126,25 +136,13 @@ public class Deque<Item> implements Iterable<Item> {
     public static void main(String[] args) {
         Deque<Integer> test = new Deque<Integer>();
         test.addFirst(0);
-        test.addFirst(1);
-        test.addFirst(2);
-        test.addFirst(3);
-        test.addFirst(4);
-        test.addFirst(5);
-        test.addFirst(6);
-        test.addFirst(7);
-        test.addLast(-1);
-        test.addLast(-2);
-        test.addLast(-3);
-        test.addLast(-4);
-        test.addLast(-5);
-        test.addLast(-6);
-        test.addLast(-7);
-        test.addLast(-8);
-        test.addLast(-9);
-        test.addLast(-10);
-        test.addLast(-11);
-        test.addLast(-12);
+        test.removeFirst();
+
+        test.addLast(0);
+        test.removeLast();
+
+        test.addFirst(0);
+        test.removeLast();
 
         for (Integer integer : test) {
             System.out.println(integer);

@@ -6,6 +6,38 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Permutation",
+            "request": "launch",
+            "mainClass": "Permutation",
+            "projectName": "coursera-algorithms-1_43db904",
+            "args": [
+                "8",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+            ]
+        },
+        {
+            "type": "java",
+            "name": "RandomizedQueue",
+            "request": "launch",
+            "mainClass": "RandomizedQueue",
+            "projectName": "coursera-algorithms-1_43db904"
+        },
+        {
+            "type": "java",
+            "name": "Deque",
+            "request": "launch",
+            "mainClass": "Deque",
+            "projectName": "coursera-algorithms-1_43db904"
+        },
+        {
+            "type": "java",
             "name": "PercolationStats",
             "request": "launch",
             "mainClass": "PercolationStats",
