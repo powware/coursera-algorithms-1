@@ -1,13 +1,13 @@
 import java.util.NoSuchElementException;
 import java.util.Iterator;
 
-public class Deque<Item> implements Iterable<Item> {
+public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private Item[] items;
     private int first = -1;
     private int last = -1;
 
-    public Deque() {
+    public RandomizedQueue() {
         items = (Item[]) new Object[1];
     }
 
@@ -19,25 +19,25 @@ public class Deque<Item> implements Iterable<Item> {
         return last - first + 1;
     }
 
-    public void addFirst(Item item) {
-        if (item == null) {
-            throw new IllegalArgumentException();
-        }
+    // public void addFirst(Item item) {
+    // if (item == null) {
+    // throw new IllegalArgumentException();
+    // }
 
-        if (first == -1) {
-            items[0] = item;
-            first = last = 0;
-            return;
-        }
+    // if (first == -1) {
+    // items[0] = item;
+    // first = last = 0;
+    // return;
+    // }
 
-        if (first - 1 < 0) {
-            increaseLeft();
-        }
+    // if (first - 1 < 0) {
+    // increaseLeft();
+    // }
 
-        items[--first] = item;
-    }
+    // items[--first] = item;
+    // }
 
-    public void addLast(Item item) {
+    public void enqueue(Item item) {
         if (item == null) {
             throw new IllegalArgumentException();
         }
@@ -55,19 +55,19 @@ public class Deque<Item> implements Iterable<Item> {
         items[++last] = item;
     }
 
-    public Item removeFirst() {
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
+    // public Item removeFirst() {
+    // if (isEmpty()) {
+    // throw new NoSuchElementException();
+    // }
 
-        Item temp = items[first];
+    // Item temp = items[first];
 
-        items[first++] = null;
+    // items[first++] = null;
 
-        return temp;
-    }
+    // return temp;
+    // }
 
-    public Item removeLast() {
+    public Item dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
@@ -79,11 +79,15 @@ public class Deque<Item> implements Iterable<Item> {
         return temp;
     }
 
-    public Iterator<Item> iterator() {
-        return new DequeIterator();
+    public Item sample() {
+        return items[last];
     }
 
-    private class DequeIterator implements Iterator<Item> {
+    public Iterator<Item> iterator() {
+        return new RandomQueueIterator();
+    }
+
+    private class RandomQueueIterator implements Iterator<Item> {
         private int i = first;
 
         public boolean hasNext() {
@@ -131,31 +135,7 @@ public class Deque<Item> implements Iterable<Item> {
     // }
 
     public static void main(String[] args) {
-        Deque<Integer> test = new Deque<Integer>();
-        test.addFirst(0);
-        test.addFirst(1);
-        test.addFirst(2);
-        test.addFirst(3);
-        test.addFirst(4);
-        test.addFirst(5);
-        test.addFirst(6);
-        test.addFirst(7);
-        test.addLast(-1);
-        test.addLast(-2);
-        test.addLast(-3);
-        test.addLast(-4);
-        test.addLast(-5);
-        test.addLast(-6);
-        test.addLast(-7);
-        test.addLast(-8);
-        test.addLast(-9);
-        test.addLast(-10);
-        test.addLast(-11);
-        test.addLast(-12);
-
-        for (Integer integer : test) {
-            System.out.println(integer);
-        }
+        RandomizedQueue<Integer> test = new RandomizedQueue<Integer>();
     }
 
 }
