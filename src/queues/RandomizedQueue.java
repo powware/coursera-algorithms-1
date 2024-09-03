@@ -1,3 +1,5 @@
+package src.queues;
+
 import java.util.NoSuchElementException;
 
 import edu.princeton.cs.algs4.StdRandom;
